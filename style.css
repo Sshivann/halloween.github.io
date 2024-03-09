@@ -1,0 +1,654 @@
+html {
+    margin: 0;
+    min-height: 100%;
+} 
+body {
+    margin: 0;
+}
+#background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    filter: brightness(1.5);
+    z-index: -2;
+}
+.headbar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color:  #6724245e;
+    text-decoration: none;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+}
+.leftbarcontainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 15em;
+}
+.logocontainer {
+    margin:0.7em 0 0.7em 2.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 8.8em;
+    text-decoration: none;
+}
+.logohalloween {
+    color: rgb(160, 4, 4);
+    text-transform: uppercase;
+    font-size: 1.1em;
+    width: 5.2em;
+    letter-spacing: 0.1em;
+    font-family:"Protest Revolution";
+}
+.logoimgcontainer {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5em;
+}
+.logoimg {
+    width: 3em;
+}
+#audiocontroller {
+    width: 45px;
+    height: 35px;
+    cursor: pointer;
+    border-radius: 100%;
+    margin: 0 1em 0 2em;
+}
+
+#audiocontroller:hover {
+    filter: brightness(0.8);
+}
+.sourcescontainer {
+    color: rgb(180, 10, 10);
+    position: absolute;
+    left: 18em;
+}
+.link {
+    border: none;
+    background: none;
+    color: rgb(97, 2, 2);
+    cursor: pointer;
+    font-size: 1.3em;
+    border: 3px solid;
+    border-radius: 0.5em;
+    position: relative;
+    font-family: "Protest Revolution";
+    animation: colorChange 0.70s infinite;
+    animation-direction: alternate;
+}
+
+.link:hover {
+    background: white;
+}
+.dropdowncontent {
+        position: absolute;
+        left: -18em;
+        top: 100%;
+        background-color: rgba(0, 0, 0, 0.226);
+        padding: 0.75rem;
+        border-radius: 0.25rem;
+        display: none;
+        flex-direction: column;
+        width: 30em;
+        text-align: center;
+        color: rgb(255, 255, 255);
+    }
+    
+    .aboutcopyright {
+        font-size: 1.2em;
+        color: rgb(165, 24, 24);
+    }
+.rightbarcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightbarstuff {
+    position: relative;
+    color: white;
+    width: 27em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 2.5vw;
+}
+.separator {
+    width: 2.3em;
+    height: 3em;
+}
+.about, .characters, .music, .contact {
+    font-size: 1.1em;
+    text-decoration: none;
+    color:rgb(221, 221, 221);
+    font-family: "Protest Revolution";
+    position: relative;
+    padding: 0 6px;
+}
+
+.about:after, .characters:after, .music:after, .contact:after {
+    content: "";
+    position: absolute;
+    background-image: linear-gradient(to right,rgb(120, 4, 4), rgb(238, 5, 5));
+    height: 2px;
+    width: 0%;
+    left: 0;
+    bottom: -2px;
+    transition: 0.4s;
+}
+
+.about:hover:after, .characters:hover:after, .music:hover:after, .contact:hover:after {
+    width: 100%;
+}
+
+.about:hover, .characters:hover, .music:hover, .contact:hover {
+    text-shadow: 0 0 5px rgb(120, 4, 4), 0 0 12px rgb(200, 3, 3) 0 0 20px rgb(238, 5, 5);
+    color: white;
+}
+
+.rightbarstuff.show {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    z-index: 4;
+    padding: 1.5em 0;
+    top: 3.4em;
+    width: 10em;
+    right: -0.42em;
+    background: rgba(0, 0, 0, 0.579);
+} 
+.menuhamburger {
+position: relative;
+display: none;
+justify-content: center;
+align-items: center;
+right: 2vw;
+width: 30px;
+height: 30px;
+cursor: pointer;
+transition: all .5s ease-in-out;
+}
+
+
+.menuhamburgerbtn {
+width: 25px;
+height: 2.5px;
+background: #fff;
+border-radius: 2px;
+transition: all .25s ease-in-out;
+}
+
+.menuhamburgerbtn::before, .menuhamburgerbtn::after {
+content: "";
+position: absolute;
+width: 25px;
+height: 2.5px;
+background: #fff;
+border-radius: 2px;
+transition: all .25s ease-in-out;
+}
+
+.menuhamburgerbtn::before {
+transform: translateY(-10px);
+}
+
+.menuhamburgerbtn::after {
+transform: translateY(10px);
+}
+
+.menuhamburger.open .menuhamburgerbtn {
+transform: translateX(-50px);
+background: transparent;
+}
+
+.menuhamburger.open .menuhamburgerbtn:before {
+transform: rotate(45deg) translate(35px, -35px);
+
+}
+
+.menuhamburger.open .menuhamburgerbtn:after {
+transform: rotate(-45deg) translate(35px, 35px);
+
+}
+
+.layer1 {
+position: relative;
+
+}
+
+.layer1BgSources {
+    font-size: 0.9em;
+    position: absolute;
+    bottom: -19em;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.449);
+    padding: 7px;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.layer1BgSource1 {
+    color: white;
+
+}
+.layer1BgSource2 {
+    color: white;
+}
+
+
+.layer1Container {
+    width: 85%;
+    height: 100%;
+    border-radius: 1.5em;
+    margin: 9em auto 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.416);
+    box-shadow: 0 0 2em rgba(151, 5, 5, 0.81);
+}
+
+.layer1Left {
+    color: white;
+    margin: 3em 2em 3em 5em;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.greetings {
+    font-size: 2.2em;
+    text-shadow: 0 0 0.8em rgb(255, 255, 255);
+    text-align: center;
+    font-family: "Protest Revolution";
+
+}
+
+.description {
+    margin-top: 1em;
+    font-size: 1.1em;
+    line-height: 1.4em;
+    text-align: justify;
+    font-family: "Protest Revolution";
+}
+.joinuscontainer {
+    margin-top: 3em;
+}
+
+.joinnow {
+    color: white;
+    border: 0.2em solid #3432329c;
+    border-radius: 2em;
+    width: 10em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 1.2em;
+    text-decoration: none;
+    background-image: linear-gradient(rgba(107, 39, 0, 0.7), rgba(250, 0, 0, 0.7), rgba(216, 44, 10, 0.7));
+    box-shadow: 0 0 0.6em white;
+    transition: 0.3s;
+    font-family: "Protest Revolution";
+}
+
+.joinnow:hover {
+    transform: translateY(-3%);
+    background: linear-gradient(rgba(211, 100, 2, 0.741), rgba(238, 89, 2, 0.889));
+    box-shadow: 0 0 0.6em white;
+    
+}
+
+.layer1Right {
+    width: 50vw;
+    margin: 3em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.layer1Image {
+    width: 33vw;
+    opacity: 0.8;
+    box-shadow: #343232e4;
+}
+
+.layer1Caption {
+    color: white;
+    margin-top: 0.5em;
+    font-size: 1.1em;
+    font-family: "Protest Revolution";
+}
+
+.layer1Source {
+    color: white;
+}
+.layer2Bg {
+    background-image: linear-gradient(rgba(120, 4, 4, 0.282)rgb(238, 5, 5)); 
+    margin-top: 18em;
+}
+
+.layer2Content {
+    padding-top: 1em;
+}
+
+.layer2Heading {
+    font-size: 2em;
+    text-align: center;
+    color: white;
+    margin: 0.5em 1em 1.5em 1em;
+    font-family: "Protest Revolution";
+
+}
+
+.layer2InfoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 2.5em;    
+    flex-wrap: wrap;
+}
+
+.gameContainer, .musicContainer, .storyContainer, .costumeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 0px;
+}
+
+.gameImage, .musicImage, .storyImage, .costumeImage {
+    width: 12em;
+    height: 14em;
+    object-fit: cover;
+    border: 0.3em solid rgb(255, 255, 255);
+    border-radius: 1.5em;
+    box-shadow: 0 10px 30px rgb(255, 69, 69);
+    transition: 0.3s;
+    margin: -0.5em -1em -1em -1em;
+}
+
+.gameImage:hover, .musicImage:hover, .storyImage:hover, .costumeImage:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgb(255, 150, 13);
+}
+
+.linkI {
+    margin: 1em 2em 0 2em;
+    border-radius: 1.5em;
+}
+
+.gameSubtext, .musicSubtext, .storySubtext, .costumeSubtext {
+    text-align: center;
+    color: white;
+    font-size: 1.7em;
+    margin: 1em 0 1em 0;
+    font-family: "Protest Revolution";
+    z-index: 2;
+}
+.layer3 {
+    background-image: url(img/background.jpg);
+    background-size: cover;
+    object-fit: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: brightness(1.1);
+}
+
+.layer3BgSource {
+    background: rgba(0, 0, 0, 0.755);
+    border-radius: 1em;
+    position: absolute;
+    padding: 7px;
+    color: white;
+    display: block;
+    bottom: 5px;
+}
+
+.layer3Text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    border-radius: 1em;
+    text-shadow: 0 0 1em rgba(0, 0, 0, 0.405), 0 0 2em black;
+    font-family: "Protest Revolution";
+    letter-spacing: 0.1em;
+    margin: 11em 0;
+}
+
+.layer3Quote {
+    font-size: 3em;
+    text-align: center;
+    font-style: italic;
+}
+.layer3QuoteFrom {
+    text-align: center;
+    margin-top: 2em;
+    font-size: 2em;
+}
+.layer4Bg {
+    background-image: linear-gradient(rgba(105, 14, 14, 0.605),rgba(56, 9, 9, 0.688));    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5em 0;
+}
+
+.layer4Content {
+    background:rgba(32, 32, 32, 0.619);
+    width: 60em;
+    padding: 2em 0;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0 2em;
+
+}
+
+.layer4Text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    padding: 0 2em 0 4em;
+    line-height: 1.3em;
+}
+
+.layer4TextHeading {
+    font-size: 1.1em;
+    font-family: "Protest Revolution";
+    font-weight: bold;
+}
+
+.layer4TextSubtext {
+    margin-top: 3px;
+    font-family: "Protest Revolution";
+}
+
+
+.layer4ContactContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5em 0 3em;
+}
+
+.layer4Contact {
+    color: white;
+    border: 0.15em solid white;
+    background-image: linear-gradient(rgba(190, 15, 6, 0.5), rgba(247, 111, 14, 0.634));
+    border-radius: 0.4em;
+    padding: 8px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-family: "Protest Revolution";
+}
+
+.layer4Contact:hover {
+    background-image: linear-gradient(rgba(255, 125, 11, 0.796), rgba(255, 134, 13, 0.829));
+}
+
+.footerLayerBg {
+    background: rgba(131, 11, 2, 0.118);
+    padding: 1.25em 0;
+    box-shadow: 0 0 1em rgba(128, 3, 3, 0.851);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}  
+
+.footerLayerAuthor {
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    font-family: "Protest Revolution";
+}
+
+@media (max-width: 1100px) {
+    .layer1Container {
+        flex-direction: column;
+    }
+    .layer1Left {
+        margin: 4em auto 0 auto;
+        width: 65vw;
+    }
+    .layer1Right {
+        margin-top: 4em;
+    }
+    .layer1Image {
+        width: 60vw;
+    }
+    .layer1Caption {
+        font-size: 2vw;
+        
+    }
+}
+
+@media (max-width: 940px) {
+    .layer4Content {
+        flex-direction: column;
+    }
+    .layer4TextHeading {
+        text-align: center;
+    }
+    .layer4ContactContainer {
+        margin: 1em auto 0 auto;
+    }
+    .layer4Text {
+        align-items: center;
+        padding: 0;
+        margin: 0 1em;
+    }
+    .layer4TextSubtext {
+        text-align: center;
+    }
+}
+
+@media (max-width: 860px) {
+    .rightbarstuff {
+        display: none;
+    }
+    .menuhamburger {
+        display: flex;
+    }
+    .headerbar {
+        width: 100vw;
+    }
+    .layer1Caption, .layer1Source {
+        font-size: 0.9em;
+        text-align: center;
+    }
+    .rightbarcontainer {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 7vw;
+    }
+    .layer1Image {
+        width: 70vw;
+    }
+}
+
+@media (min-width: 861px) {
+    .rightbarstuff {
+        position: relative;
+        color: white;
+        width: 27em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 2.6vw;
+    }
+    .rightbarstuff.show {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        z-index: 4;
+        height: 0em;
+        margin-top: -6.6em;
+        width: 27em;
+        background: transparent;
+    }
+}
+@media (max-width: 500px) {
+    #audiocontroller {
+        display: none;
+    }
+    .sourcescontainer {
+        top: 3.5em;
+        left: 0
+    }
+    .dropdowncontent {
+        left: 0;
+        width: 17em;
+    }
+    .aboutcopyright {
+        display: none;
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        background: rgba(184, 25, 4, 0.814);
+    }
+    100% {
+        background: rgba(190, 6, 6, 0.837);
+    }
+}
+@font-face {
+    font-family: "Protest Revolution";
+    src: url(font/ProtestRevolution-Regular.ttf);
+}
+.updateContainer {
+    margin-top: 10em;
+    text-align: center;
+}
+.h {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
